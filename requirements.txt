@@ -1,0 +1,14 @@
+panel
+psycopg2-binary
+langchain-community
+langchain-core
+langchain-openai
+langgraph
+
+pydantic
+
+ratelimit
+typing_extensions
+ipython
+networkx
+pyvis
