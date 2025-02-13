@@ -208,13 +208,8 @@ class AssistantApp:
                 self.clmn_analyst_personas.clear()
                 for analyst in self.analyst_personas:
                     self.clmn_analyst_personas.append(
-                        f'Name: {analyst.name} Affiliation: {analyst.affiliation} Role: {analyst.role} Description: {analyst.description}')
-
-                    print(f'Name: {analyst.name}')
-                    print(f'Affiliation: {analyst.affiliation}')
-                    print(f'Role: {analyst.role}')
-                    print(f'Description: {analyst.description}')
-                    print('-' * 50)
+                        f'Name: {analyst.name} Affiliation: {analyst.affiliation} Role: {analyst.role} Description: {analyst.description}'
+                    )
 
     def update_analyst_personas(self, event: Any = None) -> None:
         further_feedack = self.ti_analyst_input.value
@@ -239,7 +234,7 @@ class AssistantApp:
         self.accordion.active = [1]
         self.btn_interview_start.disabled = True
 
-        topic = self.ti_analyst_topic.value
+        topic = self.query_input.value
         question = self.ti_interview_question.value.format(topic=topic)
         messages = [HumanMessage(question)]
 
@@ -253,8 +248,6 @@ class AssistantApp:
                 self.report_sections.append(section)
                 self.chat_report_sections.add_message(section)
                 self.chat_interview.add_message(section)
-                # print(f'Section: {section}')
-                # print('-' * 50)
 
             # Update progress bar
             self.pb_interview_progress.value = int(((i + 1) / len(self.analyst_personas)) * 100)
@@ -267,7 +260,6 @@ class AssistantApp:
 
         topic = self.ti_analyst_topic.value
         self.final_report = ''
-        self.chat_report_sections.clear()
         self.chat_report_final.clear()
 
         tech_report_state = ResearchGraphState(
